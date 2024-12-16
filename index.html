@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+      text-align: center;
+      padding: 10px;
+      border-radius: 10px;
+      background-color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Maslahat Generatori</h1>
+    <button id="btn"> Maslahat Olish</button>
+
+  </div>
+
+
+  <script >
+    
+const btn = document.getElementById('btn');
+const textP = document.getElementById('textP');
+function res() {
+  fetch('https://api.adviceslip.com/advice')
+    .then(response => response.json())
+    .then(data => {
+      textP.textContent = `${data.slip.advice}`;
+    })
+    .catch(error => {
+      textP.textContent = "xatolik yuz berdi";
+    });
+}
+btn.addEventListener('click', res);
+  </script>
+
+</body>
+</html>

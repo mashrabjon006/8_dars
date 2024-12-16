@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Tasodifiy Kayfiyat Rangi</h1>
+        <button id="btn">Rangni Yangilash</button>
+        <div id="block"></div>
+        <p id="textColor">Rang kodini ko'rsatish uchun tugmani bosing.</p>
+    </div>
+
+
+
+    <script>
+        const btn = document.getElementById('btn');
+const block = document.getElementById('block');
+const textColor = document.getElementById('textColor');
+function getRandomColor() {
+    fetch('https://random-data-api.com/api/color/random_color')
+        .then(response => response.json())
+        .then(data => {
+            const color = "#" + data.hex;
+            block.style.backgroundColor = color;
+            textColor.textContent = `Rang: ${color}`;
+        })
+        .catch(error => {
+            textColor.textContent = "xatolik yuz berdi.";
+        });
+}
+btn.addEventListener('click', getRandomColor);
+
+
+    </script>
+
+</body>
+
+</html>
